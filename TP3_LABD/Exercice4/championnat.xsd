@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="type-nomClub">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOSC Lille Metropole"/>
+            <xs:enumeration value="Stade Rennais FC"/>
+            <xs:enumeration value="Olympique Lyonnais"/>
+            <xs:enumeration value="Olympique de Marseille"/>
+            <xs:enumeration value="Paris Saint-Germain"/>
+            <xs:enumeration value="Montpellier Herault SC"/>
+            <xs:enumeration value="AS Saint-Etienne"/>
+            <xs:enumeration value="Girondins de Bordeaux"/>
+            <xs:enumeration value="FC Lorient"/>
+            <xs:enumeration value="AC Ajaccio"/>
+            <xs:enumeration value="FC de Sochaux Montbéliard"/>
+            <xs:enumeration value="AS Monaco FC"/>
+            <xs:enumeration value="OGC Nice"/>
+            <xs:enumeration value="Valenciennes FC"/>
+            <xs:enumeration value="Stade de Reims"/>
+            <xs:enumeration value="SC Bastia"/>
+            <xs:enumeration value="Evian TG FC"/>
+            <xs:enumeration value="EA Guingamp"/>
+            <xs:enumeration value="Toulouse FC"/>
+            <xs:enumeration value="FC Nantes"/>
+        </xs:restriction>
+    </xs:simpleType>
+ 
+    <xs:simpleType name="type-shortNomClub">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOSC"/>
+            <xs:enumeration value="SRFC"/>
+            <xs:enumeration value="OL"/>
+            <xs:enumeration value="OM"/>
+            <xs:enumeration value="PSG"/>
+            <xs:enumeration value="MHSC"/>
+            <xs:enumeration value="ASSE"/>
+            <xs:enumeration value="GB"/>
+            <xs:enumeration value="FCL"/>
+            <xs:enumeration value="ACA"/>
+            <xs:enumeration value="FCSM"/>
+            <xs:enumeration value="ASMFC"/>
+            <xs:enumeration value="OGCN"/>
+            <xs:enumeration value="VAFC"/>
+            <xs:enumeration value="SR"/>
+            <xs:enumeration value="SCB"/>
+            <xs:enumeration value="ETGFC"/>
+            <xs:enumeration value="EAG"/>
+            <xs:enumeration value="TFC"/>
+            <xs:enumeration value="FCN"/>
+        </xs:restriction>
+    </xs:simpleType>
+	
+	
+	<xs:simpleType name="type-score">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]+ [0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+    
+    <xs:complexType name="composant-championnat">
+	<xs:sequence>
+			<xs:element name="clubs" type="clubs-plus"/>
+			<xs:element name="journées" type="journées-plus"/>
+		</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="clubs-plus">
+		<xs:sequence>
+			<xs:element name="club" type="club-composant" maxOccurs="20" minOccurs="20"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="club-composant">
+		<xs:sequence>
+			<xs:element name="nom" type="type-nomClub" maxOccurs="1" minOccurs="1"/>
+			<xs:element name="ville" type="xs:string" maxOccurs="1" minOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="type-shortNomClub"></xs:attribute>
+	</xs:complexType>
+	
+    <xs:complexType name="journées-plus">
+		<xs:sequence>
+		<!-- j'ai donné 21 minimum juste pour que ça colle avec le fichier xml    -->		
+			<xs:element name="journée" type="journée-composant" maxOccurs="38" minOccurs="21"/>
+		</xs:sequence>
+	</xs:complexType>
+    
+    <xs:complexType name="journée-composant">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date" maxOccurs="1" minOccurs="1"/>
+			
+			<!--  parfois un match se joue en avance ou en retard par rapport à la date officielle   ( dans ce cas
+			 là j'ai donné 4 matchs en avance ou en retard), il y'aura que 6 match si ça arrive dans la même semaine        -->
+			<xs:element name="rencontre" type="type-rencontre" maxOccurs="14" minOccurs="6"/>
+		</xs:sequence>
+		<xs:attribute name="num" type="xs:positiveInteger"></xs:attribute>
+	</xs:complexType>
+		
+	<xs:complexType name="type-rencontre">
+		<xs:sequence>
+			<xs:element name="clubReceveur" type="type-shortNomClub" maxOccurs="1" minOccurs="1"/>
+			<xs:element name="clubInvité" type="type-shortNomClub" maxOccurs="1" minOccurs="1"/>
+			<xs:element name="score" type="type-score" maxOccurs="1" minOccurs="1"/> 
+		</xs:sequence>
+	</xs:complexType>
+	    
+	<xs:element name="championnat" type="composant-championnat"/>
+
+</xs:schema>

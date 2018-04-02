@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Wed Jan 24 16:13:43 CET 2018 -->
+
+<document>
+	
+	<book titre="labd">
+		<book>
+			<edition/>
+			<livre/>
+		</book>
+		<livre titre="test"/>
+		<livre titre="test"/>
+		<edition>
+			edition
+		</edition>
+	</book>
+	<livre titre="labd" prix="20€"/>
+	<livre titre="M3DS"/>
+</document>

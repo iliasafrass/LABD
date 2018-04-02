@@ -1,0 +1,24 @@
+<!-- DTD created at Thu Jan 18 13:34:01 WET 2018 with EditiX. Please insert an encoding attribute header for converting any DTD  -->
+
+<!ELEMENT itineraire (essentiel,autre)>
+
+<!ELEMENT essentiel ( depart, arrivee, date, mode, preference, vitesseDeMarche, tempsDeParcours)>
+<!ELEMENT depart (#PCDATA)>
+<!ELEMENT arrivee (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT mode (#PCDATA)>
+<!ELEMENT preference (#PCDATA)>
+<!ELEMENT vitesseDeMarche (#PCDATA)>
+<!ELEMENT tempsDeParcours (#PCDATA)>
+
+<!ELEMENT autre (phase)+>
+<!ELEMENT phase (#PCDATA)>
+<!ATTLIST phase
+	heure CDATA #IMPLIED
+	direction CDATA #IMPLIED
+	duree CDATA #IMPLIED
+	ligne CDATA #IMPLIED
+	mode CDATA #IMPLIED
+	arret CDATA #IMPLIED
+	correspondance CDATA #IMPLIED
+>

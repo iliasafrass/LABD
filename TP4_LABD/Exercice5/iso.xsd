@@ -1,0 +1,36 @@
+
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xml.insee.fr/schema" version="3.0" xmlns:ie="http://xml.insee.fr/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="insee-commun.xsd"/>
+	<xs:simpleType name="CodePaysIsoType">
+		<xs:restriction base="xs:token">
+			<xs:length value="2"/>
+			<xs:pattern value="[A-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodePaysIso" type="ie:CodePaysIsoType"/>
+	<xs:attribute name="codePaysIso" type="ie:CodePaysIsoType"/>
+	<xs:simpleType name="CodePaysIsoA3Type">
+		<xs:restriction base="xs:token">
+			<xs:length value="3"/>
+			<xs:pattern value="[A-Z]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodePaysIsoA3" type="ie:CodePaysIsoA3Type"/>
+	<xs:attribute name="codePaysIsoA3" type="ie:CodePaysIsoA3Type"/>
+	<xs:simpleType name="CodePaysIsoNumeric3Type">
+		<xs:restriction base="xs:token">
+			<xs:length value="3"/>
+			<xs:pattern value="[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodePaysIsoNumeric3" type="ie:CodePaysIsoNumeric3Type"/>
+	<xs:attribute name="codePaysIsoNumeric3" type="ie:CodePaysIsoNumeric3Type"/>
+	<xs:simpleType name="CodeNationaliteIsoType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[A-Z]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodeNationaliteIso" type="ie:CodeNationaliteIsoType"/>
+	<xs:attribute name="codeNationaliteIso" type="ie:CodeNationaliteIsoType"/>
+</xs:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE itineraire SYSTEM "d3.dtd">
+
+<A>
+	<B>
+		<C>1</C>
+		<C>2</C>
+	</B>
+	<F>3</F>
+</A>

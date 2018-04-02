@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Wed Jan 17 20:47:19 WET 2018 -->
+
+<monde>
+<pays nom="France">
+	<capitale> Paris</capitale>
+	<population année="2007"> 64102000 </population>
+</pays>
+
+<pays nom="Italie">
+	<capitale> Rome</capitale>
+	<population > 58133509 </population>
+</pays>
+
+<pays nom="Espagne">
+	<capitale> Madrid </capitale>
+	<population année="2006"> 44708964 </population>
+</pays>
+
+</monde>

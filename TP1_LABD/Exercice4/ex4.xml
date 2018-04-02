@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jan 18 13:33:55 WET 2018 -->
+
+
+<!DOCTYPE itineraire SYSTEM "ex4.dtd">
+<itineraire>
+	<essentiel>
+
+		<depart> Seclin - Centre hospitalier </depart>
+
+		<arrivee> Roubaix - Avenue Motte </arrivee>
+
+		<date> Mardi 22 janvier à 12h35 </date>
+
+		<mode> Métro-Tramway-Bus-Car </mode>
+
+		<preference> Arriver le plus rapidement </preference>
+
+		<vitesseDeMarche> Normale </vitesseDeMarche>
+
+		<tempsDeParcours> 1h 27min </tempsDeParcours>
+	</essentiel>
+	<autre>
+		<phase direction="Seclin - Hôtel de Ville" mode="pied" duree="13min">
+			Du lieu Seclian - Centre hospitalier
+		</phase>
+		
+		<phase direction="Lille - Porte des Postes"  ligne="52" mode="bus" heure="14h51"  duree="23min">
+			Prendre le bus.
+		</phase>
+		
+		<phase arret="Lille - CHR B Calmette" heure="15H14" correspondance="4min">
+			Descendre.
+		</phase>
+		
+		<phase direction="Villeneuve d'Ascq - 4 Cantons Grand Stade"  mode="Metro" ligne="1" heure="15h18"  duree="3min">
+			Prendre le métro.
+		</phase>
+		
+		<phase arret="Lille - Porte des Postes"  heure="15H21" correspondance="6min">
+			Descendre.
+		</phase>
+		
+		<phase direction="Tourcoing - CH Dron"   mode="Metro" ligne="2" heure="15h27"  duree="25min">
+			Prendre le métro.
+		</phase>
+		
+		<phase arret="Roubaix - Epeule Montesquieu" heure="15H52" correspondance="4min" >
+			Descendre 
+		</phase>
+		
+		<phase direction="Roubaix - fraternité" mode="bus" ligne="25" heure="15h56"  duree="9min">
+			Prendre le bus.
+		</phase>
+		
+		<phase arret="Roubaix- Avenue Motte"  heure="15H14">
+			Descendre.
+		</phase>
+	</autre>
+</itineraire>

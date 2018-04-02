@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- QUESTION1  -->
+	<xs:simpleType name="type-heure">
+		<xs:restriction base="xs:time">
+			<xs:minInclusive value="02:30:00"/>
+			<xs:maxInclusive value="16:50:00"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- QUESTION2  -->
+	<xs:simpleType name="type-reel">
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="-3476.4"/>
+			<xs:maxExclusive value="5"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	
+	<!-- QUESTION3  -->
+	<xs:simpleType name="type-chaine">
+		<xs:restriction base="xs:string">
+			<xs:length value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- QUESTION4  -->
+	<xs:simpleType name="type-image">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(jpg|png|gif)"/>
+			<!-- on peut aussi utiliser une enumeration
+			<xs:enumeration value="jpg"/>
+			<xs:enumeration value="png"/>
+			<xs:enumeration value="gif"/>
+			-->
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- QUESTION5  -->
+	<xs:simpleType name="type-isbn">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{13}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<xs:element name="heure" type="type-heure"/>
+	<xs:element name="reel" type="type-reel"/>
+	<xs:element name="chaine" type="type-chaine"/>
+	<xs:element name="image" type="type-image"/>
+	<xs:element name="isbn" type="type-isbn"/>
+
+</xs:schema>

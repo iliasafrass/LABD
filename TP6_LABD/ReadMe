@@ -1,0 +1,72 @@
+=================================  LABD 2017-2018========================================
+
+Binome : AFRASS ILIAS & TAIBI ANAS
+
+
+=========================================================================================
+
+Exercice 1 :
+
+query_bib1.xq :
+
+cette requete retourne les book dont le publisher est Addison-Wesley et dont l'annee est superieur a 1991.
+
+query_bib2.xq :
+
+cette requete retourne les titres et les auteurs de tous les
+books.
+
+query_bib3.xq :
+
+cette requete retourne les noms et prenoms des auteurs avec les titres de leurs ouvrages.
+
+query_bib4.xq :
+
+retourne la meme chose que la requete precedente mais en untilisant une fonction auxiliaire
+qui retourne le titre de l'ouvrage dont le last et le first de l'auteur sont passes en parametres.
+
+query_bib5.xq :
+
+retourne le titre et les auteurs des livres qui ont au moins un auteur.
+Pour les livres qui ont plusieurs auteurs, leurs deux premiers auteurs seulement, sont affiches, le reste des auteurs sont remplaces par et-al.
+
+query_bib6.xq :
+
+retourne tous les auteurs avec le nombre de livres qui leur appartients.
+
+query_bib7.xq :
+
+cette requette retourne toutes les annees et pour chaque annee la moyenne des prix.
+
+
+===========================================================================================================================
+
+Exercice 2 :
+
+voir dossier exercice 2.
+question1 : voir question1.xq pour la requete xquery.
+            voir question1.html pour le resultat.
+
+commande de compilation:
+java -cp ../saxon9he.jar net.sf.saxon.Query question1.xq >> question1.html
+
+==========================================================================================================================
+
+exercice 3 :
+
+voir dossier exercice 3.
+
+question 1 : voir question1.xq pour la requete xquery.
+             voir question1_resultat.xml pour le resultat.
+
+question 2 : voir question2.xq pour la requete xquery.
+             voir question2_resultat.xml pour le resultat.
+
+question 3 : voir question3.xq pour la requete xquery.
+             voir question3_resultat.xml pour le resultat.
+
+question 4 : voir question4.xq pour la requete xquery.
+             voir question4_resultat.xml pour le resultat.
+
+commande de compilation:
+java -cp ../../saxon9he.jar net.sf.saxon.Query question(i).xq >> ../resultats/question(i)_resultat.xml

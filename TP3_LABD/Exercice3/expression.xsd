@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="op">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ConsVarOp">
+					<xs:attribute name="val" type="opAttType" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ConsVarOp">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="cons" type="xs:decimal"/>
+				<xs:element name="var" type="xs:string"/>
+				<xs:element ref="op"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:element name="cons" type="xs:decimal"/>
+				<xs:element name="var" type="xs:string"/>
+				<xs:element ref="op"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="opAttType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="*"/>
+			<xs:enumeration value="+"/>
+			<xs:enumeration value="-"/>
+			<xs:enumeration value="/"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="expr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="op"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

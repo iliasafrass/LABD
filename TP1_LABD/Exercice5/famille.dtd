@@ -1,0 +1,12 @@
+<!-- DTD created at Fri Jan 19 14:06:18 WET 2018 with EditiX. Please insert an encoding attribute header for converting any DTD  -->
+
+<!ELEMENT  famille  (nom, personne+)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT personne (prenom, age, (poids-kg|poids-lb), taille?)>
+<!ATTLIST personne pnumber ID #REQUIRED mere IDREF #IMPLIED pere IDREF #IMPLIED>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT poids-kg (#PCDATA)>
+<!ELEMENT poids-lb (#PCDATA)>
+<!ELEMENT taille (#PCDATA)>
+

@@ -1,0 +1,57 @@
+<!-- DTD created at Fri Jan 19 14:35:14 WET 2018 with EditiX. Please insert an encoding attribute header for converting any DTD  -->
+
+<!ELEMENT  maisons (maison)+>
+
+<!ELEMENT maison (RDC, étage)>
+<!ATTLIST maison 
+	id CDATA #REQUIRED
+	>
+	
+<!ELEMENT RDC ((cuisine)?, (WC)?, (séjour)?, (bureau)?, (garage)?)>
+
+<!ELEMENT cuisine (#PCDATA)>
+<!ATTLIST cuisine
+	 surface-m2 CDATA #REQUIRED
+>
+
+<!ELEMENT WC (#PCDATA)>
+
+<!ELEMENT séjour (#PCDATA)>
+<!ATTLIST séjour 
+		surface-m2 CDATA #REQUIRED
+		fenetre CDATA #IMPLIED
+		>
+		
+<!ELEMENT étage ( (terrasse)?, (chambre)*,(mirador)?, (salledeBain)*)>	
+
+<!ELEMENT bureau (#PCDATA)>
+<!ATTLIST bureau
+	 surface-m2 CDATA #REQUIRED
+>
+
+<!ELEMENT garage EMPTY>
+
+<!ELEMENT chambre (#PCDATA|alcove|EMPTY)>
+<!ATTLIST chambre 
+		surface-m2 CDATA #REQUIRED
+		fenetre CDATA #IMPLIED
+		>
+		
+<!ELEMENT alcove (#PCDATA)>	
+<!ATTLIST alcove
+	surface-m2 CDATA #REQUIRED
+>	
+
+<!ELEMENT terrasse EMPTY>
+
+<!ELEMENT salledeBain (#PCDATA)>
+<!ATTLIST salledeBain 
+		surface-m2 CDATA #REQUIRED
+		>
+
+<!ELEMENT mirador (#PCDATA)>
+<!ATTLIST mirador
+		surface-m2 CDATA #REQUIRED
+		>
+
+

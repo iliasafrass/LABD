@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  elementFormDefault="qualified" 
+  targetNamespace="http://www.fil.univ-lille1.fr/labd" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bda="http://www.fil.univ-lille1.fr/labd">
+  
+  <xs:element name="personnes" type="bda:type-personnes" />
+   
+  <xs:complexType name="type-personne">
+  	<xs:sequence>
+  		<xs:element name="nom" type="xs:string" minOccurs="1" maxOccurs="1"/>
+  		<xs:element name="prénom" type="xs:string" minOccurs="1" maxOccurs="1"/>
+  		<xs:element name="sexe" type="bda:type-sexe" minOccurs="1" maxOccurs="1"/>
+  		<xs:element name="naissance" type="bda:type-événement" minOccurs="1" maxOccurs="1" />
+  		<xs:element name="décès" type="bda:type-événement" minOccurs="0" maxOccurs="1" />
+  	</xs:sequence>
+  	<xs:attribute name="id"  type="xs:string" use="required"/>
+  </xs:complexType>
+  
+  
+  <xs:complexType name="type-personnes">
+  	<xs:sequence>
+  		<xs:element name="personne" type="bda:type-personne" minOccurs="1" maxOccurs="unbounded" />
+  	</xs:sequence>	
+  </xs:complexType>
+  
+  <xs:simpleType name="type-sexe">
+  <xs:restriction base="xs:NMTOKEN">
+    <xs:enumeration value="M"/>
+    <xs:enumeration value="F"/>
+  </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="type-événement">
+    <xs:sequence>
+      <xs:element name="date" type="xs:date"/>
+      <xs:element name="lieu" type="xs:NCName"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
