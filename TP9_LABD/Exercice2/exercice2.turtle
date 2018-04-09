@@ -1,0 +1,9 @@
+@prefix ns0: <http://labd/2015/reification#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://labd/2015/reification#Boby> ns0:pense [
+    a rdf:Statement ;
+    rdf:subject ns0:Léon ;
+    rdf:predicate ns0:etat ;
+    rdf:object ns0:malade
+  ] .

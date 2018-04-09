@@ -1,0 +1,11 @@
+
+@prefix : <https://www.labd.org/2005/exercice-1/instance#> .
+@prefix ex1: <https://www.labd.org/2005/exercice-1/schema#> .
+
+:C4 a ex1:Voiture .
+
+:C4 ex1:nom "C4" .
+
+:C4 ex1:marque "Citroën" .
+
+ex1:marque date "1919".

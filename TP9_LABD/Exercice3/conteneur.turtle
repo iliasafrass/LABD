@@ -1,0 +1,10 @@
+@prefix labd: <http://labd/tprdf#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+labd:lett labd:lettre [
+	a rdf:Seq;
+	rdf:_1 "a";
+	rdf:_2 "b";
+	rdf:_3 "c";
+	rdf:_4 "d"
+].

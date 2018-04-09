@@ -1,0 +1,94 @@
+@base <http://labd/tprdf>.
+@prefix labd: <http://labd/tprdf#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <htpp://www.w3.org/2000/01/rdf-schema#>.
+
+<#Sport>
+	a rdfs:Class.
+
+<#Sport_collectif>
+	a rdfs:Class;
+	rdfs:subClassOf <#Sport>.
+
+<#Equipe>
+	a rdfs:Class.
+
+<#Nb_joueurs>
+   a rdfs:Property ;
+   rdfs:domain <#Equipe> ;
+   rdfs:range rdfs:Literal .
+
+
+<#Sport_individuel>
+	a rdfs:Class;
+	rdfs:subClassOf <#Sport>.
+
+<#Ballon>
+	a rdfs:Class.
+
+<#Stade>
+	a rdfs:Class.
+
+<#Terrain>
+a rdfs:Class;
+rdfs:subClassOf <#Stade>.
+
+<#LongXLargTerrain>
+   a rdfs:Property ;
+   rdfs:domain <#Terrain> ;
+   rdfs:range rdfs:Literal .
+
+
+<#Mi-temps>
+  a rdfs:Property ;
+  rdfs:domain <#Match> ;
+  rdfs:range rdfs:Literal .
+
+<#Pause>
+  a rdfs:Property ;
+  rdfs:domain <#Match> ;
+  rdfs:range rdfs:Literal .
+
+<#DureeMatch>
+  a rdfs:Property ;
+  rdfs:domain <#Match> ;
+  rdfs:range rdfs:Literal .
+
+<#Match>
+a rdfs:Class;
+labd:mi-temps [
+  rdf:_1 <#Mi-temps>;
+  rdf:_2 <#Pause>;
+  rdf:_3 <#Mi-temps>;
+].
+
+<#MatchAller>
+	a rdfs:Class;
+	rdfs:subClassOf <#Match>.
+
+<#MatchRetour>
+	a rdfs:Class;
+	rdfs:subClassOf <#Match>.
+    
+<#Deux_equipes>
+	a rdfs:Class;
+	labd:equipes [
+		rdf:_1 <#Equipe>;
+		rdf:_2 <#Equipe>
+	].
+
+<#Football>
+	a rdfs:Class;
+	rdfs:subClassOf <#Sport_collectif>;
+	labd:equipeFoot <#Deux_equipes>.
+
+<#Panier>
+	a rdfs:Class.
+
+<#But>
+a rdfs:Class.
+
+<#Basketball>
+	a rdfs:Class;
+	rdfs:subClassOf <#Sport_collectif>;
+	labd:equipeBasket <#Deux_equipes>.
