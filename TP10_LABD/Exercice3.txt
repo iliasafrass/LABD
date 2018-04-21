@@ -1,0 +1,106 @@
+------- Exercice 3 : Utilisation conjointe du schéma et de l’instance ----------
+
+1.1
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+select ?x where {
+  ?x a humans:Animal
+}
+=> On obtient aucune réponse.
+
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+select ?x where {
+  ?x a humans:Person
+}
+=> On obtient 7 réponses.
+
+1.2
+on obtient 7 résultats pour le cas avec Animal et 17 résultats pour Person.
+Le résultats change, parce qu'on rajoute le fichier RDFS qui fait les différents liens entre les ressources.
+
+explication : Inference de type.
+
+2.1
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+select ?x  ?t where {
+  ?x a humans:Male
+  ?x humans:hasSpouse ?t
+}
+on obtient un seul couple.
+<variable name='x'/>
+<variable name='t'/>
+</head>
+<results>
+<result>
+<binding name='x'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Harry</uri></binding>
+<binding name='t'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Sophie</uri></binding>
+</result>
+</results>
+</sparql>
+
+Nous n'obtenons désormais qu'un seul résultat car les autres personnes sont déclarés comme étant des personnes et non des "Man".
+
+2.2
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+select ?x  ?t where {
+  ?x a humans:Male
+  ?x humans:hasSpouse ?t
+}
+
+resultat:
+<?xml version="1.0" ?>
+<sparql xmlns='http://www.w3.org/2005/sparql-results#'>
+<head>
+<variable name='x'/>
+<variable name='t'/>
+</head>
+<results>
+<result>
+<binding name='x'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Harry</uri></binding>
+<binding name='t'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Sophie</uri></binding>
+</result>
+<result>
+<binding name='x'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Karl</uri></binding>
+<binding name='t'><uri>http://www.inria.fr/2007/09/11/humans.rdfs-instances#Catherine</uri></binding>
+</result>
+</results>
+</sparql>
+
+par Inferance Karl est de type male.
+
+3.
+
+
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT DISTINCT * WHERE {
+  ?x a humans:Lecturer
+  ?x rdf:type ?y
+}
+
+
+On obtient 7 résultats (2 fois Eve et 5 fois Laura), Ces Personnes ont un autre type affecté 'Lecturer'.
+
+
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT * WHERE {
+  ?x a humans:Male
+  ?x a humans:Person
+}
+
+
+On obtient John car c'est une personne et en même temps il est le père de Mark donc il est un Male.
+
+
+4.
+
+
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT DISTINCT ?x WHERE
+{
+?x humans:hasAncestor ?h
+}
+
+
+Les relations hasAncestor sont construites via les propriétés hasFather, hasMother et hasParent.

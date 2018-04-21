@@ -326,3 +326,14 @@ SELECT ?x WHERE {
 </result>
 </results>
 </sparql>
+
+6.
+ 
+ 
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+ 
+SELECT ?x ?y WHERE {
+     humans:Man rdfs:label ?x
+     FILTER (LANG(?x) = "" || LANGMATCHES(LANG(?x), "fr"))
+}
+ 
