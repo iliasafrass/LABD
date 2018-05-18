@@ -1,0 +1,145 @@
+============================== LABD ======================================
+=========================== avril 2018 ===================================
+========================== TP SPARQL no 2 ================================
+
+
+
+Exercice 1 : Sports collectifs, le retour
+
+1.
+select DISTINCT ?x where {
+  ?x a rdfs:Class
+}
+
+2.
+prefix schem:  <http://www.labd.org/2015/sport/schema#>
+
+SELECT DISTINCT ?x WHERE
+{
+  ?x a rdf:Property
+  ?x rdfs:domain schem:Sport
+}
+
+3.
+prefix schem:  <http://www.labd.org/2015/sport/schema#>
+
+SELECT DISTINCT ?x WHERE
+{
+  ?y a schem:Sport
+  ?y ?x ?z
+}
+
+4.
+prefix schem:  <http://www.labd.org/2015/sport/schema#>
+
+SELECT DISTINCT ?x WHERE
+{
+  ?x rdfs:comment ?y
+  FILTER regex(?y, "[Ss]port")
+}
+
+5.
+prefix schem:  <http://www.labd.org/2015/sport/schema#>
+
+SELECT DISTINCT ?x WHERE
+{
+  ?x a schem:Sport
+  FILTER NOT EXISTS { ?x schem:utiliseMateriel ?y }
+}
+
+6.
+version avec GROUP BY :
+prefix :  <http://www.labd.org/2015/sport/schema#>
+prefix hms:  <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT ?x ?y WHERE
+{
+  ?x a hms:Person
+  ?x :pratique ?y
+}
+GROUP BY ?x
+HAVING ( COUNT(?y) > 1)
+
+version sans GROUP BY :
+prefix :  <http://www.labd.org/2015/sport/schema#>
+prefix hms:  <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT DISTINCT ?x ?y WHERE
+{
+  ?x a hms:Person
+  ?x :pratique ?y
+  ?x :pratique ?z
+  FILTER (?y != ?z)
+}
+
+7.
+version avec GROUP BY :
+prefix :  <http://www.labd.org/2015/sport/schema#>
+prefix hms:  <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT ?x ?y WHERE
+{
+  ?x a hms:Person
+  ?x :pratique ?y
+}
+GROUP BY ?x
+HAVING ( COUNT(?y) = 1)
+
+version sans GROUP BY :
+prefix :  <http://www.labd.org/2015/sport/schema#>
+prefix hms:  <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT DISTINCT ?x ?y WHERE{
+?x a hms:Person
+?x :pratique ?y
+MINUS {
+  ?z a hms:Person
+  ?z :pratique ?t
+  ?z :pratique ?w
+  FILTER (?t != ?w)
+}
+}
+
+8.
+prefix :  <http://www.labd.org/2015/sport/schema#>
+prefix hms:  <http://www.inria.fr/2007/09/11/humans.rdfs#>
+
+SELECT DISTINCT ?x (COUNT(?y) AS ?nb) WHERE{
+ ?x a hms:Person
+ ?x :pratique ?y
+}
+GROUP BY ?x
+
+9.
+prefix sps:  <http://www.labd.org/2015/sport/schema#>
+prefix spi: <http://www.labd.org/2015/sport/instance#>
+
+SELECT ?x WHERE{
+spi:Basket sps:match/sps:duree/rdfs:member ?x
+}
+
+10.
+prefix sps:  <http://www.labd.org/2015/sport/schema#>
+prefix spi: <http://www.labd.org/2015/sport/instance#>
+SELECT ?x WHERE{
+spi:Basket sps:match/sps:duree/rdfs:member ?x
+FILTER (contains(?x,"NBA"))
+}
+
+OU
+
+prefix sps:  <http://www.labd.org/2015/sport/schema#>
+prefix spi: <http://www.labd.org/2015/sport/instance#>
+SELECT ?x WHERE{
+spi:Basket sps:match/sps:duree/rdfs:member ?x
+FILTER regex(?x,"NBA")
+}
+
+11.
+prefix sps: <http://www.labd.org/2015/sport/schema#>
+SELECT ?x ?t  WHERE
+{
+ ?x a sps:SportCollectif
+ ?x sps:match/sps:duree/rdfs:member ?y
+ FILTER isLiteral(?y)
+}

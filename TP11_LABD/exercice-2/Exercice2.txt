@@ -1,0 +1,61 @@
+============================== LABD ======================================
+=========================== avril 2018 ===================================
+========================== TP SPARQL no 2 ================================
+
+Exercice 2 : My name is Bond, James Bond
+
+1.
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+select ?z ?w where {
+  ?x foaf:name "James Bond"
+  ?x foaf:knows ?y
+  ?y foaf:name ?z
+OPTIONAL{ ?y foaf:homepage ?w }
+}
+
+2.
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+select ?z ?w where {
+  ?x foaf:name "James Bond"
+  ?x foaf:knows ?y
+  ?y foaf:name ?z
+OPTIONAL{ ?y foaf:homepage ?w }
+OPTIONAL{ ?y foaf:interest ?w }
+OPTIONAL{ ?y foaf:workplaceHomepage ?w }
+}
+
+3.
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix james: <http://bond007.org/RDF/mes_donnees.rdf#>
+
+select ?n where {
+james:me foaf:knows+/foaf:name ?n
+FILTER NOT EXISTS { ?n foaf:name "James Bond" }
+}
+
+4.
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix james: <http://bond007.org/RDF/mes_donnees.rdf#>
+
+select ?y where {
+james:me foaf:knows ?y
+FILTER NOT EXISTS { ?y foaf:phone ?z }
+}
+
+5.
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix james: <http://bond007.org/RDF/mes_donnees.rdf#>
+
+select ?x (COUNT(?y) AS ?nb) where {
+{
+?x a foaf:Person
+?x foaf:knows ?y
+}
+UNION{
+?x a foaf:Person
+FILTER NOT EXISTS { ?x foaf:know ?y }
+}
+}
+GROUP BY (?x)
